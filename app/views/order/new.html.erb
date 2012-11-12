@@ -1,0 +1,23 @@
+<% provide(:title, 'Create Order') %>
+<h1>Create Order</h1>
+
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_for(@order) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
+			<%= f.label :content %>
+			<%= f.text_area :content %>
+
+			<%= f.label :address %>
+			<%= f.text_area :address %>
+
+			<%= f.label :zipcode %>
+			<%= f.text_field :zipcode %>
+
+			<%= f.label :phone %>
+			<%= f.text_field :phone %>
+
+			<%= f.submit "Submit my order", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>
