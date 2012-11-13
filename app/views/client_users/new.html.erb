@@ -1,0 +1,39 @@
+<% provide(:title, 'Client user sign up') %>
+<h1>Client user sign up</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@client_user) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :real_name %>
+      <%= f.text_field :real_name %>
+
+      <%= f.label :gender %>
+      <%= f.select :gender, ClientUser::GENDERS %>
+
+      <%= f.label :birthdate %>
+	  <%= f.date_select :birthdate, :start_year => 1900 %>
+
+      <%= f.label :phone %>
+      <%= f.telephone_field :phone %>
+
+      <%= f.label :address %>
+	  <%= f.text_area :address , :rows => 3%>
+
+      <%= f.label :zipcode %>
+      <%= f.text_field :zipcode %>
+
+      <%= f.label :account_name %>
+      <%= f.text_field :account_name %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

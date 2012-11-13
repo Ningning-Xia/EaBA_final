@@ -15,5 +15,16 @@
 #
 
 class ClientUser < ActiveRecord::Base
-  attr_accessible :account_name, :address, :birthdate, :gender, :phone, :real_name, :zipcode
+  attr_accessible :account_name, :address, :birthdate, :gender, :phone, :real_name, :zipcode, :password, :password_confirmation
+
+  has_secure_password
+
+  before_save { |client_user| client_user.account_name.downcase }
+
+  GENDERS = [:male, :female]
+
+  validates :account_name, presence: true, length: { minimum:4 }, 
+	  uniqueness: { case_sensitive: false }
+  validates :password, presence: true, length: { minimum:4 }
+  validates :password, presence: true
 end

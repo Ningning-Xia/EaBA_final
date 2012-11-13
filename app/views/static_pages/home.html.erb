@@ -2,9 +2,11 @@
 	<h1>Welcome to the EaBA</h1>
 
 	<h2>
-		This is the home page for the EaBA
+		Sign up as a
 	</h2>
 
-	<%= link_to "Sign up now!", "#", 
+	<%= link_to "Client user", client_signup_path, 
+		class: "btn btn-large btn-primary" %>
+	<%= link_to "Restaurant user", restaurant_signup_path, 
 		class: "btn btn-large btn-primary" %>
 	</div>
