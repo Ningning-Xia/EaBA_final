@@ -1,0 +1,2 @@
+class ClientToRestaurantReviewsController < ApplicationController
+end
