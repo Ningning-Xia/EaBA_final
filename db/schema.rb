@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121113054704) do
+ActiveRecord::Schema.define(:version => 20121113151827) do
 
   create_table "administrators", :force => true do |t|
     t.string   "account_name"
@@ -40,9 +40,11 @@ ActiveRecord::Schema.define(:version => 20121113054704) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "password_digest"
+    t.string   "remember_token"
   end
 
   add_index "client_users", ["account_name"], :name => "index_client_users_on_account_name", :unique => true
+  add_index "client_users", ["remember_token"], :name => "index_client_users_on_remember_token"
 
   create_table "orders", :force => true do |t|
     t.integer  "client_user_id"
@@ -70,9 +72,12 @@ ActiveRecord::Schema.define(:version => 20121113054704) do
     t.integer  "restaurant_id"
     t.string   "account_name"
     t.string   "real_name"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "remember_token"
   end
+
+  add_index "restaurant_users", ["remember_token"], :name => "index_restaurant_users_on_remember_token"
 
   create_table "restaurants", :force => true do |t|
     t.string   "camis"

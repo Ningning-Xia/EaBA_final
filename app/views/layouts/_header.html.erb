@@ -1,35 +1,27 @@
 <header class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <%= link_to "EaBA", root_path, id: "logo" %>
-      <nav>
-        <ul class="nav pull-right">
-          <li><%= link_to "Home", root_path %></li>
-		  <li><%= link_to "Help", "#" %></li>
-          <% if false %>
-          <% if signed_in? %>
-            <li><%= link_to "Users", users_path %></li>
-            <li id="fat-menu" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Account <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Profile", current_user %></li>
-                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-                <li class="divider"></li>
-                <li>
-                  <%= link_to "Sign out", signout_path, method: "delete" %>
-                </li>
-              </ul>
-            </li>
-          <% else %>
-            <li><%= link_to "Sign in", signin_path %></li>
-          <% end %>
-	  <% end %>
-            <li><%= link_to "Client User", client_login_path %></li>
-            <li><%= link_to "Restaurant User", restaurant_login_path %></li>
-        </ul>
-      </nav>
-    </div>
-  </div>
+<div class="navbar-inner">
+	<div class="container">
+		<%= link_to "EaBA", root_path, id: "logo" %>
+		<nav>
+		<ul class="nav pull-right">
+			<% if loged_in? %>
+				<li><%= link_to "Profile", "#" %></li>
+				<li><%= link_to "Preference", "#" %></li>
+				<li><%= link_to "Orders", "#" %></li>
+				<li><%= link_to "Reviews", "#" %></li>
+				<li>
+				<% if current_user.is_a? ClientUser%>
+					<%= link_to "Logout", client_user_logout_path, method: "delete" %>
+				<% else %>
+					<%= link_to "Logout", restaurant_user_logout_path, method: "delete" %>
+				<% end %>
+				</li>
+			<% else %>
+				<li><%= link_to "Client User", client_user_login_path %></li>
+				<li><%= link_to "Restaurant User", restaurant_user_login_path %></li>
+			<% end %>
+		</ul>
+		</nav>
+	</div>
+</div>
 </header>

@@ -1,11 +1,18 @@
 EaBA::Application.routes.draw do
   resources :orders
   resources :client_users
+  resources :client_user_sessions, only: [:new, :create, :destroy]
+  resources :restaurant_user_sessions, only: [:new, :create, :destroy]
+
   root to: 'static_pages#home'
-  match '/client_signup', to: 'ClientUsers#new'
-  match '/restaurant_signup', to: 'RestaurantUsers#new'
-  match '/client_login', to: 'ClientSessions#new'
-  match '/restaurant_login', to: 'RestaurantSessions#new'
+
+  match '/client_user_signup', to: 'ClientUsers#new'
+  match '/restaurant_user_signup', to: 'RestaurantUsers#new'
+  match '/client_user_login', to: 'ClientUserSessions#new'
+  match '/client_user_logout', to: 'ClientUserSessions#destroy', via: :delete
+  match '/restaurant_user_login', to: 'RestaurantUserSessions#new'
+  match '/restaurant_user_login', to: 'RestaurantUserSessions#destroy', via: :delete
+  match '/restaurant_user_logout', to: 'RestaurantUserSessions#destroy', via: :delete
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
