@@ -11,7 +11,35 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121112161145) do
+ActiveRecord::Schema.define(:version => 20121113042821) do
+
+  create_table "administrators", :force => true do |t|
+    t.string   "account_name"
+    t.string   "real_name"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "client_to_restaurant_reviews", :force => true do |t|
+    t.integer  "client_id"
+    t.integer  "restaurant_id"
+    t.string   "review"
+    t.integer  "score"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "client_users", :force => true do |t|
+    t.string   "gender"
+    t.date     "birthdate"
+    t.string   "zipcode"
+    t.string   "address"
+    t.string   "phone"
+    t.string   "account_name"
+    t.string   "real_name"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "orders", :force => true do |t|
     t.integer  "client_user_id"
@@ -22,6 +50,45 @@ ActiveRecord::Schema.define(:version => 20121112161145) do
     t.string   "phone"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+  end
+
+  create_table "restaurant_to_client_reviews", :force => true do |t|
+    t.integer  "client_id"
+    t.integer  "restaurant_id"
+    t.string   "review"
+    t.integer  "score"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "restaurant_users", :force => true do |t|
+    t.string   "license_no"
+    t.string   "phone"
+    t.integer  "restaurant_id"
+    t.string   "account_name"
+    t.string   "real_name"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "restaurants", :force => true do |t|
+    t.string   "camis"
+    t.string   "dba"
+    t.string   "boro"
+    t.string   "building"
+    t.string   "street"
+    t.string   "zipcode"
+    t.string   "phone"
+    t.string   "cuisine"
+    t.string   "insp_date"
+    t.string   "action"
+    t.string   "violcode"
+    t.string   "score"
+    t.string   "current_grade"
+    t.string   "grade_date"
+    t.string   "record_date"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
 end
