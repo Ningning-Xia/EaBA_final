@@ -4,17 +4,20 @@
 		<%= link_to "EaBA", root_path, id: "logo" %>
 		<nav>
 		<ul class="nav pull-right">
-			<% if loged_in? %>
+			<% if client_user_loged_in? %>
 				<li><%= link_to "Profile", "#" %></li>
 				<li><%= link_to "Preference", "#" %></li>
 				<li><%= link_to "Orders", "#" %></li>
 				<li><%= link_to "Reviews", "#" %></li>
 				<li>
-				<% if current_user.is_a? ClientUser%>
 					<%= link_to "Logout", client_user_logout_path, method: "delete" %>
-				<% else %>
+				</li>
+			<% elsif restaurant_user_loged_in? %>
+				<li><%= link_to "Restaurant", "#" %></li>
+				<li><%= link_to "Orders", "#" %></li>
+				<li><%= link_to "Reviews", "#" %></li>
+				<li>
 					<%= link_to "Logout", restaurant_user_logout_path, method: "delete" %>
-				<% end %>
 				</li>
 			<% else %>
 				<li><%= link_to "Client User", client_user_login_path %></li>

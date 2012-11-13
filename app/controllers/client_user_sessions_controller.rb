@@ -7,7 +7,7 @@ class ClientUserSessionsController < ApplicationController
 
 		client_user = ClientUser.find_by_account_name(params[:client_user_session][:account_name].downcase)
 		if client_user && client_user.authenticate(params[:client_user_session][:password])
-			login client_user
+			client_user_login client_user
 			redirect_to client_user
 		else
 			flash.now[:error] = 'Invalid account/password combination'
@@ -16,7 +16,7 @@ class ClientUserSessionsController < ApplicationController
 	end
 
 	def destroy
-		logout
+		client_user_logout
 		redirect_to root_url
 	end
 end

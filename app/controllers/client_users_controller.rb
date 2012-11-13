@@ -7,7 +7,7 @@ class ClientUsersController < ApplicationController
 		@client_user = ClientUser.new(params[:client_user])
 		if @client_user.save
 			flash[:success] = "You have successfully created your account!"
-			login @client_user
+			client_user_login @client_user
 			redirect_to @client_user 
 		else
 			render 'new'
